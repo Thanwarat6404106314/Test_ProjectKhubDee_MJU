@@ -1,12 +1,11 @@
 package com.springmvc.model;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Entity
-@Table(name = "Notification")
+@Table(name = "notification")
 public class Notification {
 
     @Id
@@ -15,10 +14,10 @@ public class Notification {
 
     @Column(name = "notification_date", nullable = false)
     private Date notification_date;
-    
+
     @Column(name = "notification_status", length = 50, nullable = false)
     private String notification_status;
-    
+
     @Column(name = "message", columnDefinition = "TEXT")
     private String message;
 
@@ -52,29 +51,28 @@ public class Notification {
     }
 
     public String getNotification_status() {
-		return notification_status;
-	}
+        return notification_status;
+    }
 
-	public void setNotification_status(String notification_status) {
-		this.notification_status = notification_status;
-	}
+    public void setNotification_status(String notification_status) {
+        this.notification_status = notification_status;
+    }
 
-	public String getStatus_view() {
+    public String getStatus_view() {
         return status_view;
     }
 
     public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public void setStatus_view(String status_view) {
-        this.status_view = status_view;
+        return message;
     }
 
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public void setStatus_view(String status_view) {
+        this.status_view = status_view;
+    }
 
     public RecordViolation getRecordViolation() {
         return recordViolation;
@@ -83,7 +81,7 @@ public class Notification {
     public void setRecordViolation(RecordViolation recordViolation) {
         this.recordViolation = recordViolation;
     }
-    
+
     @PrePersist
     public void generateRecordId() {
         if (this.notification_id == null) {

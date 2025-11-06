@@ -3,20 +3,21 @@ package com.springmvc.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ViolationType")
+@Table(name = "violationtype")
 public class ViolationType {
 
 	@Id
-    @Column(name = "violation_id", length = 4)
-    private String violation_id;
+	@Column(name = "violation_id", length = 4)
+	private String violation_id;
 
-    @Column(name = "violation_name", length = 50, nullable = false)
-    private String violation_name;
-    
-    @Column(name = "deduct_score", nullable = false)
-    private int deduct_score;
-    
-	public ViolationType() {}
+	@Column(name = "violation_name", length = 50, nullable = false)
+	private String violation_name;
+
+	@Column(name = "deduct_score", nullable = false)
+	private int deduct_score;
+
+	public ViolationType() {
+	}
 
 	public ViolationType(String violation_id, String violation_name, int deduct_score) {
 		super();
@@ -48,8 +49,5 @@ public class ViolationType {
 	public void setDeduct_score(int deduct_score) {
 		this.deduct_score = deduct_score;
 	}
-	
-	
-    
-    
+
 }

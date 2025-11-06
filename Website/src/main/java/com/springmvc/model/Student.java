@@ -3,7 +3,7 @@ package com.springmvc.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Student")
+@Table(name = "student")
 public class Student {
 
     @Id
@@ -31,26 +31,27 @@ public class Student {
     @Column(name = "email", length = 50, nullable = false)
     private String email;
 
-    @Column(name = "password", length = 60, nullable = false) 
+    @Column(name = "password", length = 60, nullable = false)
     private String password;
-    
-    public Student() {}
 
-	public Student(String student_id, String firstname, String lastname, String major, String faculty,
-			int student_score, String img_student, String email, String password) {
-		super();
-		this.student_id = student_id;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.major = major;
-		this.faculty = faculty;
-		this.student_score = student_score;
-		this.img_student = img_student;
-		this.email = email;
-		this.password = password;
-	}
+    public Student() {
+    }
 
-	public String getStudent_id() {
+    public Student(String student_id, String firstname, String lastname, String major, String faculty,
+            int student_score, String img_student, String email, String password) {
+        super();
+        this.student_id = student_id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.major = major;
+        this.faculty = faculty;
+        this.student_score = student_score;
+        this.img_student = img_student;
+        this.email = email;
+        this.password = password;
+    }
+
+    public String getStudent_id() {
         return student_id;
     }
 
@@ -119,6 +120,6 @@ public class Student {
     }
 
     public void setPassword(String password) {
-        this.password = password; 
+        this.password = password;
     }
 }

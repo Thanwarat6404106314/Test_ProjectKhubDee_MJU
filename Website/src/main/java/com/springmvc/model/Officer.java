@@ -1,36 +1,38 @@
 package com.springmvc.model;
 
 import javax.persistence.*;
+
 @Entity
-@Table(name = "Officer")
+@Table(name = "officer")
 public class Officer {
 
 	@Id
-    @Column(name = "officer_id", length = 10)
-    private String officer_id;
-	
-    @Column(name = "firstname", length = 50, nullable = false)
-    private String firstname;
-    
-    @Column(name = "lastname", length = 50, nullable = false)
-    private String lastname;
-    
-    @Column(name = "position", length = 30, nullable = false)
-    private String position;
-    
-    @Column(name = "signature", length = 255, nullable = false)
-    private String signature;
-    
-    @Column(name = "img_officer")
-    private String img_officer;
-    
-    @Column(name = "email", length = 50, nullable = false)
-    private String email;
-    
-    @Column(name = "password", length = 20, nullable = false)
-    private String password;
-    
-	public Officer() {}
+	@Column(name = "officer_id", length = 10)
+	private String officer_id;
+
+	@Column(name = "firstname", length = 50, nullable = false)
+	private String firstname;
+
+	@Column(name = "lastname", length = 50, nullable = false)
+	private String lastname;
+
+	@Column(name = "position", length = 30, nullable = false)
+	private String position;
+
+	@Column(name = "signature", length = 255, nullable = false)
+	private String signature;
+
+	@Column(name = "img_officer")
+	private String img_officer;
+
+	@Column(name = "email", length = 50, nullable = false)
+	private String email;
+
+	@Column(name = "password", length = 20, nullable = false)
+	private String password;
+
+	public Officer() {
+	}
 
 	public Officer(String officer_id, String firstname, String lastname, String position, String signature,
 			String img_officer, String email, String password) {
@@ -44,8 +46,6 @@ public class Officer {
 		this.email = email;
 		this.password = password;
 	}
-
-
 
 	public String getOfficer_id() {
 		return officer_id;
@@ -110,7 +110,5 @@ public class Officer {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-    
-	
-    
+
 }

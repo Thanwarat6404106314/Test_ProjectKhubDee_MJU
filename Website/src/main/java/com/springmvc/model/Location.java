@@ -3,17 +3,18 @@ package com.springmvc.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Location")
+@Table(name = "location")
 public class Location {
 
 	@Id
-    @Column(name = "location_id", length = 4)
-    private String location_id;
+	@Column(name = "location_id", length = 4)
+	private String location_id;
 
-    @Column(name = "location_name", length = 50, nullable = false)
-    private String location_name;
-    
-	public Location() {}
+	@Column(name = "location_name", length = 50, nullable = false)
+	private String location_name;
+
+	public Location() {
+	}
 
 	public Location(String location_id, String location_name) {
 		super();
@@ -36,5 +37,5 @@ public class Location {
 	public void setLocation_name(String location_name) {
 		this.location_name = location_name;
 	}
-	
+
 }

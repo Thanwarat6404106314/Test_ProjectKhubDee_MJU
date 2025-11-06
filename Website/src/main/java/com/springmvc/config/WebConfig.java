@@ -15,10 +15,10 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ComponentScan(basePackages = "com.springmvc")
 public class WebConfig implements WebMvcConfigurer {
     @Bean
-    public ViewResolver viewResolver(){
+    public ViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 
-        //	หา file .jsp ที่ไหน
+        // หา file .jsp ที่ไหน
         viewResolver.setPrefix("/WEB-INF/jsp/");
         viewResolver.setSuffix(".jsp");
 
@@ -27,10 +27,10 @@ public class WebConfig implements WebMvcConfigurer {
 
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/assets/**").addResourceLocations("WEB-INF/assets/");
-        registry.addResourceHandler("/img_news/**").addResourceLocations("file:///C:/img/img_news/");
-        registry.addResourceHandler("/img_officer/**").addResourceLocations("file:///C:/img/img_officer/");
-        registry.addResourceHandler("/img_student/**").addResourceLocations("file:///C:/img/img_student/");
-        registry.addResourceHandler("/picture_evidence/**").addResourceLocations("file:///C:/img/picture_evidence/");
+        registry.addResourceHandler("/img_news/**").addResourceLocations("WEB-INF/img/img_news/");
+        registry.addResourceHandler("/img_officer/**").addResourceLocations("WEB-INF/img/img_officer/");
+        registry.addResourceHandler("/img_student/**").addResourceLocations("WEB-INF/img/img_student/");
+        registry.addResourceHandler("/picture_evidence/**").addResourceLocations("WEB-INF/img/picture_evidence/");
     }
 
 }
