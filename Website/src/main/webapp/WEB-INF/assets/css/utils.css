@@ -1,0 +1,201 @@
+:root {
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+
+    --primary: #008000;
+    --secondary: #6c757d;
+    --thirdary: rgb(24, 191, 0);
+}
+
+
+*, ::after, ::before {
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+body {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+p {
+    margin: 0;
+}
+
+main {
+    max-width: 75%;
+    margin: 0 auto;
+    margin-bottom: 5%;
+}
+
+main {
+    max-width: 75%; /* ขนาดสูงสุดของคอนเทนเนอร์ */
+    margin: 0 auto; /* จัดให้อยู่ตรงกลาง */
+    margin-bottom: 5%;
+    
+    min-height: 50vh; /* ขนาดความสูงขั้นต่ำ 50% ของ viewport */
+    flex-grow: 1; /* ให้ขยายได้ถ้าจำเป็น */
+    display: flex;
+    flex-direction: column; /* เพื่อจัดการลูกองค์ประกอบภายใน */
+}
+
+
+.container {
+    width: 100%;
+    padding: 0 50px !important;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.blog-header {
+	background-color: transparent !important;
+	box-shadow: 0 0 0 0 transparent !important; 
+}
+
+.blog-header a {
+	font-size: 10;
+}
+
+.blog-header a .img-fluid {
+    max-width: 350px;
+    transition: all .3s ease;
+}
+
+.blog-header a .img-fluid:hover {
+    transform: scale(.95);
+}
+
+/*                         N A V B A R                        */
+.nav-scroller .nav1 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.nav-scroller .nav1 li {
+	list-style: none;
+}
+
+.nav-scroller .nav1 a {
+    display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: .95rem;
+    color: var(--light) !important;
+	transition: all .3s ease;
+}
+
+.nav-scroller .nav1 a:hover {
+    font-size: .95rem;
+    color: var(--yellow) !important;
+    background-color: rgba(255, 255, 255, .2)
+}
+
+
+
+.nav-scroller {
+    background: var(--primary) !important;
+}
+
+.nav-scroller .nav {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.nav-scroller .nav a {
+    display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: .95rem;
+    color: var(--light) !important;
+	transition: all .3s ease;
+}
+
+.nav-scroller .nav a:hover {
+    font-size: .95rem;
+    color: var(--yellow) !important;
+    background-color: rgba(255, 255, 255, .2)
+}
+
+
+/*                         D R O P D O W N                         */
+.nav-item:hover .dropdown-menu {
+    display: block;
+}
+
+.nav-item .dropdown-menu {
+    display: none;
+    padding: 0;
+    border-radius: 0;
+    background-color: var(--primary) !important;
+    width: 260px;
+}
+
+.nav-item .dropdown-item {
+    display: block; 
+    font-size: .75rem;
+    padding-left: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 10px;
+    /*text-align: left !important; */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    color: var(--white);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dropdown-toggle i {
+    margin-left: 10px;
+    font-size: .85rem;
+}
+
+.dropdown-toggle::after {
+	content: none !important;
+}
+
+
+/*                         F O O T E R                         */
+.blog-footer {
+	margin-top: auto;
+    padding: 1.5rem;
+    color: #fff;
+    text-align: center;
+    background-color: var(--primary) !important;
+    border-top: .05rem solid #e5e5e5;
+}
+
+.blog-footer a {
+    color: var(--blue) !important;
+    text-transform: uppercase;
+    background-color: transparent;
+    transition: all .3s ease;
+}
+
+.blog-footer a:hover {
+    color: var(--yellow) !important;
+}
+
+.swal2-container {
+    display: grid;
+    font-family: "Sarabun", sans-serif !important;
+}

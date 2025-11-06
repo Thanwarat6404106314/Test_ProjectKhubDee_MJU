@@ -1,0 +1,22 @@
+.img-container {
+	display: flex;
+    justify-content: left; /* จัดแนวนอนให้อยู่กลาง */
+    align-items: center; /* จัดแนวตั้งให้อยู่กลาง */
+    margin-bottom: 20px; /* เพิ่มระยะห่างด้านล่าง */
+}
+
+#news-image {
+	max-width: 100%; /* ไม่ให้รูปภาพเกิน container */
+    width: 500px; /* กำหนดขนาดกว้างของรูปภาพ */
+    height: 300px; /* รักษาสัดส่วนของรูปภาพ */
+    border-radius: 8px; /* เพิ่มมุมโค้ง */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+}
+
+.img-size {
+    width: 1000pt;              
+    height: 1000pt;              
+    object-fit: cover;          
+    max-width: 240px;           
+    max-height: 240px;          
+}

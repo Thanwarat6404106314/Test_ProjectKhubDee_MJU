@@ -1,0 +1,50 @@
+.list-topics-content {
+    position: relative;
+    top: 50px;
+    z-index: 1;
+    text-align: center; /* จัดให้อยู่ตรงกลาง */
+}
+
+.list-topics-content ul {
+    padding: 0;
+    list-style: none; /* ลบจุดหน้าไอเท็ม */
+    display: flex; /* ใช้ Flexbox */
+    flex-wrap: wrap; /* ทำให้ไอเท็มขึ้นบรรทัดใหม่เมื่อเต็ม */
+    justify-content: center; /* จัดให้อยู่ตรงกลาง */
+    gap: 20px; /* ระยะห่างระหว่างไอเท็ม */
+}
+
+.list-topics-content ul li {
+    display: flex;
+    justify-content: center;
+}
+
+.single-list-topics-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 160px;
+    background: rgb(224, 224, 224);
+    border-radius: 10px;
+    box-shadow: 0 0px 10px rgba(71, 71, 71, .2);
+    transition: all 0.3s ease;
+    text-align: center;
+    
+    font-size: 18px; /* ขนาดตัวอักษร */
+    color: #000; /* สีดำ */
+    text-decoration: none;
+}
+
+.single-list-topics-content:hover {
+    background: rgb(67, 201, 81); 
+    color: #fff;
+    box-shadow: 0 5px 10px rgba(71, 71, 71, .4);
+}
+
+
+
+
+.single-list-topics-content p {
+    margin: 0;
+}

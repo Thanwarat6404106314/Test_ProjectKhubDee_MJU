@@ -1,0 +1,38 @@
+.listviolation table tr {
+	text-align: center;
+	vertical-align: middle; 
+}
+
+.listviolation table td {
+	padding: 10px;
+    text-align: center; 
+    vertical-align: middle; 
+    font-size: 14px;
+}
+
+/*
+.listviolation select {
+    -webkit-appearance: none;  
+    -moz-appearance: none;     
+    appearance: none;         
+    background-image: url('assets/images/icon/arrow-down-sign-to-navigate.png');
+    background-repeat: no-repeat;
+    background-position: right center; 
+    padding-right: 30px; 
+    font-size: 14px;
+}
+*/
+
+select {
+    padding-right: 30px; /* เพิ่มพื้นที่ขวาเพื่อให้ไอคอนลูกศรแสดง */
+    width: 100%; /* ขยายขนาด select ให้เต็มพื้นที่ */
+}
+
+i.fi {
+    position: absolute;
+    right: 10px; /* ระยะห่างจากขอบขวา */
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* ป้องกันไม่ให้ไอคอนจับคลิก */
+}
+
