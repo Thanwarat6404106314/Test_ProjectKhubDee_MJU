@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project_final/controller/StudentController.dart';
 import 'package:project_final/screens/home_screen.dart';
 import 'package:project_final/screens/Officer/student_detail_screen.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 
 class ScanStudentIdScreen extends StatefulWidget {
   const ScanStudentIdScreen({super.key});
@@ -15,10 +15,10 @@ class _ScanStudentIdScreenState extends State<ScanStudentIdScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final StudentController studentController = StudentController();
   TextEditingController student_idController = TextEditingController();
-  final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
-  QRViewController? qrViewController;
+  MobileScannerController cameraController = MobileScannerController();
   String scannedCode = '';
   int _selectedIndex = 0;
+  bool isNavigating = false; // เพื่อป้องกันการนำทางซ้ำ
 
   @override
   void initState() {
@@ -27,50 +27,44 @@ class _ScanStudentIdScreenState extends State<ScanStudentIdScreen> {
 
   @override
   void dispose() {
-    qrViewController?.dispose(); // ปิดกล้องเมื่อหน้าจอถูกปิด
+    cameraController.dispose(); // ปิดกล้องเมื่อหน้าจอถูกปิด
     super.dispose();
   }
 
-  void _onQRViewCreated(QRViewController qrViewController) {
-    this.qrViewController = qrViewController;
-    qrViewController.scannedDataStream.listen((scanData) async {
-      if (scanData.code != null) {
+  void _onDetect(BarcodeCapture barcodeCapture) async {
+    if (isNavigating) return; // ป้องกันการนำทางซ้ำ
+
+    final List<Barcode> barcodes = barcodeCapture.barcodes;
+    for (final barcode in barcodes) {
+      if (barcode.rawValue != null && barcode.rawValue!.isNotEmpty) {
         setState(() {
-          scannedCode = scanData.code!;
+          scannedCode = barcode.rawValue!;
+          isNavigating = true;
         });
 
-        if (scannedCode.isNotEmpty) {
-          qrViewController.pauseCamera();
-          await Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => StudentDetaillScreen(
-                student_id: scannedCode,
-              ),
+        await cameraController.stop();
+        await Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => StudentDetaillScreen(
+              student_id: scannedCode,
             ),
-          );
-          qrViewController.resumeCamera();
-        }
+          ),
+        );
+
+        setState(() {
+          isNavigating = false;
+        });
+        await cameraController.start();
+        break;
       }
-    });
+    }
   }
 
   Widget buildQrView(BuildContext context) {
-    var scanArea = (MediaQuery.of(context).size.width < 400 ||
-            MediaQuery.of(context).size.height < 400)
-        ? 200.0
-        : 400.0;
-
-    return QRView(
-      key: qrKey,
-      onQRViewCreated: _onQRViewCreated,
-      overlay: QrScannerOverlayShape(
-        borderColor: Color(0xFF006D0D),
-        borderRadius: 10,
-        borderLength: 30,
-        borderWidth: 10,
-        cutOutSize: scanArea,
-      ),
+    return MobileScanner(
+      controller: cameraController,
+      onDetect: _onDetect,
     );
   }
 
@@ -86,7 +80,8 @@ class _ScanStudentIdScreenState extends State<ScanStudentIdScreen> {
       appBar: AppBar(
         title: Text(
           'บันทึกรหัสนักศึกษา',
-          style: TextStyle(color: Colors.white, fontSize: 18, fontFamily: 'Mitr'),
+          style:
+              TextStyle(color: Colors.white, fontSize: 18, fontFamily: 'Mitr'),
         ),
         backgroundColor: Color(0xFF006D0D),
         centerTitle: true,
@@ -101,12 +96,13 @@ class _ScanStudentIdScreenState extends State<ScanStudentIdScreen> {
           },
         ),
       ),
-      body: _selectedIndex == 0 ? scanStudentIdScreen() : fieldStudentIdScreen(),
+      body:
+          _selectedIndex == 0 ? scanStudentIdScreen() : fieldStudentIdScreen(),
       bottomNavigationBar: BottomNavigationBar(
-        selectedLabelStyle: TextStyle(color: Colors.grey[400], fontFamily: 'Mitr'),
+        selectedLabelStyle:
+            TextStyle(color: Colors.grey[400], fontFamily: 'Mitr'),
         unselectedLabelStyle: TextStyle(color: Colors.grey, fontFamily: 'Mitr'),
         items: const <BottomNavigationBarItem>[
-          
           BottomNavigationBarItem(
             icon: Icon(Icons.qr_code_scanner),
             label: 'สแกน',

@@ -99,7 +99,8 @@ class _RecordViolationScreenState extends State<RecordViolationScreen> {
       List<Location> locations = await locationController.getListLocation();
       setState(() {
         locationList = locations;
-        selectedLocationId = locations.isNotEmpty ? locations.first.location_id : null;
+        selectedLocationId =
+            locations.isNotEmpty ? locations.first.location_id : null;
       });
     } catch (e) {
       print("Error fetching locations: $e");
@@ -108,10 +109,13 @@ class _RecordViolationScreenState extends State<RecordViolationScreen> {
 
   Future<void> fetchVioaltionType() async {
     try {
-      List<ViolationType> violationtypes = await violationTypeController.getListViolationType();
+      List<ViolationType> violationtypes =
+          await violationTypeController.getListViolationType();
       setState(() {
         violationTypeList = violationtypes;
-        selectedViolationTypeId = violationtypes.isNotEmpty ? violationtypes.first.violation_id : null;
+        selectedViolationTypeId = violationtypes.isNotEmpty
+            ? violationtypes.first.violation_id
+            : null;
       });
     } catch (e) {
       print("Error fetching violationtype: $e");
@@ -305,7 +309,7 @@ class _RecordViolationScreenState extends State<RecordViolationScreen> {
         Text('สถานที่', style: TextStyle(fontFamily: 'Mitr')),
         SizedBox(height: 6),
         DropdownButtonFormField<String>(
-          value: selectedLocationId,
+          initialValue: selectedLocationId,
           onChanged: (String? newValue) {
             setState(() {
               selectedLocationId = newValue!;
@@ -342,7 +346,7 @@ class _RecordViolationScreenState extends State<RecordViolationScreen> {
         Text('ประเภทการละเมิดกฏจราจร', style: TextStyle(fontFamily: 'Mitr')),
         SizedBox(height: 6),
         DropdownButtonFormField<String>(
-          value: selectedViolationTypeId,
+          initialValue: selectedViolationTypeId,
           onChanged: (String? newValue) {
             setState(() {
               selectedViolationTypeId = newValue!;
@@ -354,8 +358,8 @@ class _RecordViolationScreenState extends State<RecordViolationScreen> {
             }
             return null;
           },
-          items:
-              violationTypeList.map<DropdownMenuItem<String>>((ViolationType violationType) {
+          items: violationTypeList
+              .map<DropdownMenuItem<String>>((ViolationType violationType) {
             return DropdownMenuItem<String>(
               value: violationType.violation_id,
               child: Text('${violationType.violation_name}',
