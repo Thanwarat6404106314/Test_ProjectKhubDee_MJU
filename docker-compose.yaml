@@ -9,6 +9,8 @@ services:
       MYSQL_DATABASE: project496_db
       MYSQL_USER: user1
       MYSQL_PASSWORD: 1234
+    ports:
+      - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     networks:
@@ -17,6 +19,27 @@ services:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       timeout: 20s
       retries: 10
+
+  # Khubdeemju Spring Boot Application
+  khubdeemju:
+    build:
+      context: ./khubdeemju
+      dockerfile: Dockerfile
+    container_name: khubdee-khubdeemju
+    restart: always
+    ports:
+      - "8083:8081"
+      - "5005:5005"
+    environment:
+      JAVA_TOOL_OPTIONS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/project496_db?characterEncoding=UTF-8&allowPublicKeyRetrieval=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 1234
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - khubdee-network
 
   # Tomcat Application Server
   tomcat:

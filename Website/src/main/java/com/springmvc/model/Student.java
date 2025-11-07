@@ -3,7 +3,7 @@ package com.springmvc.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "student")
+@Table(name = "Student")
 public class Student {
 
     @Id

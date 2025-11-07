@@ -13,11 +13,11 @@ import java.util.concurrent.ThreadLocalRandom;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Notification")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name = "notification")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Notification {
 
-	@Id
+    @Id
     @Column(name = "notification_id", length = 6)
     private String notification_id;
     @Column(name = "notification_date", nullable = false)
@@ -33,7 +33,7 @@ public class Notification {
     @JoinColumn(name = "record_id", nullable = false)
     private RecordViolation recordViolation;
 
-    //   สำหรับ Generate ID อัตโนมัติ
+    // สำหรับ Generate ID อัตโนมัติ
     @PrePersist
     public void generateRecordId() {
         if (this.notification_id == null) {
@@ -45,6 +45,5 @@ public class Notification {
         int randomNum = ThreadLocalRandom.current().nextInt(1000, 9999); // สุ่มเลข 4 หลัก (0000 - 9999)
         return String.format("NF" + randomNum);
     }
-    
-}
 
+}

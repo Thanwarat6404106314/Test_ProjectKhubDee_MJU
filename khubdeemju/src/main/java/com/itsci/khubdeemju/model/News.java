@@ -13,11 +13,11 @@ import java.util.concurrent.ThreadLocalRandom;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "News")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name = "news")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class News {
 
-	@Id
+    @Id
     @Column(name = "news_id", length = 6)
     private String news_id;
     @Column(name = "title", length = 100, nullable = false)
@@ -33,7 +33,7 @@ public class News {
     @JoinColumn(name = "officer_id", nullable = false)
     private Officer officer;
 
-    //   สำหรับ Generate ID อัตโนมัติ
+    // สำหรับ Generate ID อัตโนมัติ
     @PrePersist
     public void generateRecordId() {
         if (this.news_id == null) {

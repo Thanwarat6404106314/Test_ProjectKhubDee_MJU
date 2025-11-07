@@ -3,7 +3,7 @@ package com.springmvc.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "violationtype")
+@Table(name = "ViolationType")
 public class ViolationType {
 
 	@Id

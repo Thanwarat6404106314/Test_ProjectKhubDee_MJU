@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Debug Khubdeemju (Spring Boot)",
+      "request": "launch",
+      "mainClass": "com.itsci.khubdeemju.KhubdeemjuApplication",
+      "projectName": "khubdeemju",
+      "cwd": "${workspaceFolder}/khubdeemju",
+      "args": "--spring.profiles.active=local",
+      "vmArgs": "-Dspring.profiles.active=local",
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart"
+    },
+    {
+      "type": "java",
+      "name": "Attach to Khubdeemju (Remote)",
+      "request": "attach",
+      "hostName": "localhost",
+      "port": 5005,
+      "projectName": "khubdeemju"
+    },
+    {
+      "type": "java",
+      "name": "Attach to Tomcat (no prelaunch)",
+      "request": "attach",
+      "hostName": "localhost",
+      "port": 8000,
+      "projectName": "project469"
+    },
+  ]
+}

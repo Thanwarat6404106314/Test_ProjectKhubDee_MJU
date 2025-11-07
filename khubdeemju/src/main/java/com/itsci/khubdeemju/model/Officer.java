@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Officer")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name = "officer")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Officer {
 
     @Id

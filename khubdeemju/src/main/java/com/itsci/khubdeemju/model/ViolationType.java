@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "ViolationType")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name = "violationtype")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class ViolationType {
 
     @Id
@@ -21,6 +21,5 @@ public class ViolationType {
     private String violation_name;
     @Column(name = "deduct_score", nullable = false)
     private int deduct_score;
-    
-    
+
 }

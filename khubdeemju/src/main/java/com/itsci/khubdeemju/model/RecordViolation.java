@@ -13,8 +13,8 @@ import java.util.concurrent.ThreadLocalRandom;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "RecordViolation")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name = "recordviolation")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class RecordViolation {
 
     @Id
@@ -49,7 +49,7 @@ public class RecordViolation {
     @JoinColumn(name = "violation_id", nullable = false)
     private ViolationType violationType;
 
-//   สำหรับ Generate ID อัตโนมัติ
+    // สำหรับ Generate ID อัตโนมัติ
     @PrePersist
     public void generateRecordId() {
         if (this.record_id == null) {
@@ -61,7 +61,5 @@ public class RecordViolation {
         int randomNum = ThreadLocalRandom.current().nextInt(1000, 9999); // สุ่มเลข 4 หลัก (0000 - 9999)
         return String.format("RC" + randomNum);
     }
-
-
 
 }

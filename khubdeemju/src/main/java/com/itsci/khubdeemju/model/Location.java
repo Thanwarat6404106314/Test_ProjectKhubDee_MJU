@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Location")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name = "location")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Location {
 
     @Id
@@ -20,6 +20,4 @@ public class Location {
     @Column(name = "location_name", length = 50, nullable = false)
     private String location_name;
 
-    
-    
 }
