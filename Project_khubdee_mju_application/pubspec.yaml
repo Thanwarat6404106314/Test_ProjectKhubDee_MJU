@@ -1,0 +1,54 @@
+name: project_final
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+
+
+environment:
+  sdk: '>=3.3.4 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # สำหรับสแกน QR Code เท่านั้น
+  qr_code_scanner: ^1.0.1
+  # สำหรับสร้าง QR Code
+  qr_flutter: ^4.1.0
+  # สไลด์หน้าจอ
+  carousel_slider: ^4.2.1
+  # 
+  permission_handler: ^10.2.0
+  # เพิ่มไฟล์
+  file_picker: ^4.0.0
+  # รูปภาพ
+  image_picker: ^1.1.2
+  # บันทึก รูป
+  shared_preferences: ^2.1.0
+
+  http_parser: ^4.0.2
+  event_bus: ^2.0.0
+
+  flutter_session_manager: ^1.0.3
+  # alert
+  quickalert: ^1.1.0
+  # กราฟ
+  fl_chart: ^0.69.2
+  syncfusion_flutter_charts: ^27.2.4
+
+  http: ^1.2.1
+  intl: ^0.19.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  assets:
+    - assets/images/
+  fonts:
+    - family: Mitr
+      fonts: 
+      - asset: assets/fonts/Mitr-Light.ttf
+  uses-material-design: true
