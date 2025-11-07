@@ -28,13 +28,15 @@ services:
     container_name: khubdee-khubdeemju
     restart: always
     ports:
-      - "8083:8081"
+      - "8083:8083"
       - "5005:5005"
     environment:
       JAVA_TOOL_OPTIONS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/project496_db?characterEncoding=UTF-8&allowPublicKeyRetrieval=true&useSSL=false
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: 1234
+    volumes:
+      - ./website/src/main/webapp/WEB-INF/img:/app/img
     depends_on:
       mysql:
         condition: service_healthy
